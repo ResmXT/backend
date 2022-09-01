@@ -1,0 +1,115 @@
+const mongoose=require('mongoose');
+const educationSchema=new mongoose.Schema({
+    institute_name:{
+        type:String,
+    },
+    state:{
+        type:String
+    },
+    field:{
+        type:String
+    },
+    degree:{
+        type:String
+    },
+    cgpa:{
+        type:String
+    },
+    is_currently_working:{
+        type:Boolean,
+        default:false
+    },
+    start_year:{
+        type:String
+    },
+
+});
+const workSchema=new mongoose.Schema({
+    company_name:{
+        type:String
+    },
+    job_title:{
+        type:String
+    },
+    is_currently_working:{
+        type:Boolean
+    },
+    start_date:{
+        type:Date
+    },
+    end_date:{
+        type:Date
+    },
+    state:{
+        type:String
+    }
+})
+const projectSchema=new mongoose.Schema({
+    project_title:{
+        type:String
+    },
+    project_url:{
+        type:String
+    },
+    project_description:{
+        type:String
+    }
+})
+const SocialSchema=new mongoose.Schema({
+    linked_url:{
+        type:String
+    },
+    github_url:{
+        type:String
+    }
+})
+const basicInfoSchema=new mongoose.Schema({
+    full_name:{
+        type:String,
+    },
+    mobile_number:{
+        type:String
+    },
+    title:{
+        type:String
+    },
+    state:{
+        type:String
+    },
+    city:{
+        type:String
+    },
+    about:{
+        type:String
+    }
+})
+const userSchema=new mongoose.Schema({
+    username:{
+        type:String,
+        required:true,
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    template:{
+        type:String,
+    },
+    token:{
+        type:String
+    },
+    basic_info:basicInfoSchema,
+    education:[educationSchema],
+    work_experience:[workSchema],
+    skills:[String],
+    projects:[projectSchema],
+    social_links:SocialSchema,
+    achievements:{
+        type:String
+    },
+})
+module.exports=mongoose.model('User',userSchema);
