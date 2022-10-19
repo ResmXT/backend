@@ -8,7 +8,7 @@ const connectToDatabase=require('./src/database/connect')
 const port=process.env.PORT||5000;
 app.use(express.json());
 app.use(cors({
-    origin:["https://ressome.vercel.app","http://localhost:3000"],
+    origin:["https://resmxt.web.app","http://localhost:3000"],
     credentials:true
 }));
 app.use(cookieParser())
